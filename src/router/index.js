@@ -1,27 +1,34 @@
+/*
+ * @Author: your name
+ * @Date: 2020-02-11 15:50:07
+ * @LastEditTime : 2020-02-12 14:56:14
+ * @LastEditors  : Please set LastEditors
+ * @Description: 页面路由注册
+ * @FilePath: \vue_shop\src\router\index.js
+ */
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import Login from '../components/login.vue'
+import Home from '../components/home.vue'
 
 Vue.use(VueRouter)
-
-const routes = [
-  {
-    path: '/',
-    name: 'Home',
-    component: Home
-  },
-  {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  }
-]
-
 const router = new VueRouter({
-  routes
+  routes: [
+    { path: '/', redirect: '/login' },
+    { path: '/login', component: Login },
+    { path: '/home', component: Home }
+  ]
+})
+
+// 挂载路由导航守卫
+router.beforeEach((to, from, next) => {
+  // to是将要访问的路径，from是从那个路径跳转而来，next是一个放行函数
+  // 若访问的是login页面，则直接放行
+  if (to.path === '/login') { return next() }
+  // 否则，需要先获取token,若token存在，则说明已登陆，放行；否则，强制跳转到登陆页面
+  const tokenStr = window.sessionStorage.getItem('token')
+  if (!tokenStr) { return next('/login') }
+  next()
 })
 
 export default router
