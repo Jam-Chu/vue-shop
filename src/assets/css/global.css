@@ -1,6 +1,19 @@
-/* 全局样式表 */
+/* 全局样式表,覆盖默认样式时需要书写 */
 html, body, #app{
     height: 100%;
     margin: 0;
     padding: 0;
+}
+.el-breadcrumb{
+    margin-bottom: 15px;
+}
+.el-card{
+    /* !important使低权值声明可以覆盖高权值而生效 */
+    box-shadow: 0 1px 1px rgba(0,0,0,0.15) !important;
+}
+.el-table{
+    margin-top: 15px;
+}
+.el-pagination{
+    margin-top: 15px;
 }

@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-02-11 15:50:07
- * @LastEditTime : 2020-02-12 14:56:14
+ * @LastEditTime : 2020-02-14 15:17:25
  * @LastEditors  : Please set LastEditors
  * @Description: 页面路由注册
  * @FilePath: \vue_shop\src\router\index.js
@@ -10,13 +10,22 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Login from '../components/login.vue'
 import Home from '../components/home.vue'
+import Welcome from '../components/welcome'
+// Welcome是子路由，属于home页面的组件
+import Users from '../components/users/users'
 
 Vue.use(VueRouter)
 const router = new VueRouter({
   routes: [
     { path: '/', redirect: '/login' },
     { path: '/login', component: Login },
-    { path: '/home', component: Home }
+    {
+      path: '/home',
+      component: Home,
+      redirect: '/welcome',
+      children: [{ path: '/welcome', component: Welcome },
+        { path: '/users', component: Users }]
+    }
   ]
 })
 

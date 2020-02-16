@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-02-11 15:50:07
- * @LastEditTime : 2020-02-12 14:42:36
+ * @LastEditTime : 2020-02-13 14:23:25
  * @LastEditors  : Please set LastEditors
  * @Description: 配置，依赖入口文件
  * @FilePath: \vue_shop\src\main.js
@@ -17,6 +17,12 @@ import './assets/fonts/iconfont.css'
 // 导入axios通信,并配置
 import axios from 'axios'
 axios.defaults.baseURL = 'http://127.0.0.1:8888/api/private/v1/'
+// 设置拦截器
+axios.interceptors.request.use(config => {
+  console.log(config)
+  config.headers.Authorization = window.sessionStorage.getItem('token')
+  return config
+})
 Vue.prototype.$http = axios
 
 Vue.config.productionTip = false
