@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-02-14 15:09:25
- * @LastEditTime : 2020-02-15 15:36:27
+ * @LastEditTime: 2020-02-18 20:24:32
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue_shop\src\components\users\users.vue
@@ -66,7 +66,7 @@
                   <el-button type="primary" icon="el-icon-edit" size="mini" @click="showEditDialog(scope.row.id)" ></el-button>
                   <el-button type="danger" icon="el-icon-delete" size="mini" @click="removeUsers(scope.row.id)"></el-button>
                   <el-tooltip placement="top" effect="dark" content="分配角色" :enterable="false">
-                    <el-button type="warning" icon="el-icon-setting" size="mini"></el-button>
+                    <el-button type="warning" icon="el-icon-setting" size="mini" @click="showSettingDialog(scope.row)"></el-button>
                   </el-tooltip>
                 </template>
               </el-table-column>
@@ -91,8 +91,23 @@
               </span>
             </el-dialog>
             <!-- 分配角色弹框，等待权限组件完成后制作 -->
+            <el-dialog title="分配角色" :visible.sync="settingDialogVisible" width="50%" @close="settingDialogClosed">
+              <div>
+                <p>当前的用户：{{settingRoleInfo.username}}</p>
+                <p>当前的用户角色：{{settingRoleInfo.role_name}}</p>
+                <p>分配新角色：
+                  <el-select v-model="selectedRoleId" placeholder="请选择">
+                    <el-option v-for="(item) in roleslist" :key="item.id" :label="item.roleName" :value="item.id"></el-option>
+                  </el-select>
+                </p>
+              </div>
+              <span slot="footer">
+                <el-button @click="settingDialogVisible = false">取消</el-button>
+                <el-button type="primary" @click="handSettingRoleDialog">确定</el-button>
+              </span>
+            </el-dialog>
           <!-- 分页区 -->
-            <el-pagination @size-change='handleSizeChange($event)'        @current-change='handleCurrentChange($event)' :current-page="queryInfo.pagenum" :page-sizes="[1,2,5,10]" :page-size="queryInfo.pagesize" layout="
+            <el-pagination @size-change='handleSizeChange($event)' @current-change='handleCurrentChange($event)' :current-page="queryInfo.pagenum" :page-sizes="[1,2,5,10]" :page-size="queryInfo.pagesize" layout="
             total, sizes, prev, pager, next, jumper" :total="total"></el-pagination>
         </el-card>
     </div>
@@ -121,9 +136,13 @@ export default {
         pagesize: 2
       },
       userlist: [],
+      roleslist: [],
       total: 0,
       isVisible: false,
       editVisible: false,
+      settingDialogVisible: false,
+      selectedRoleId: '',
+      settingRoleInfo: {},
       editForm: {},
       addForm: {
         username: '',
@@ -244,6 +263,27 @@ export default {
       this.$message.success('删除用户成功')
       // 刷新列表
       this.getUserList()
+    },
+    async showSettingDialog (info) {
+      this.settingRoleInfo = info
+      this.settingDialogVisible = true
+      const { data: res } = await this.$http.get('roles')
+      if (res.meta.status !== 200) { return this.$message.error('获取下拉角色列表失败') }
+      this.roleslist = res.data
+      console.log(this.roleslist)
+    },
+    async handSettingRoleDialog () {
+      // 提交前的验证
+      if (!this.selectedRoleId) { return this.$message.error('请选择一个角色') }
+      const { data: res } = await this.$http.put(`users/${this.settingRoleInfo.id}/role`, { rid: this.selectedRoleId })
+      if (res.meta.status !== 200) { return this.$message.error('更新角色失败') }
+      this.$message.success('更新用户信息成功')
+      this.getUserList()
+      this.settingDialogVisible = false
+    },
+    settingDialogClosed () {
+      this.selectedRoleId = ''
+      this.settingRoleInfo = []
     }
   }
 }
