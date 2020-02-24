@@ -1,8 +1,8 @@
 /*
  * @Author: your name
  * @Date: 2020-02-11 15:50:07
- * @LastEditTime : 2020-02-13 14:23:25
- * @LastEditors  : Please set LastEditors
+ * @LastEditTime: 2020-02-19 15:03:32
+ * @LastEditors: Please set LastEditors
  * @Description: 配置，依赖入口文件
  * @FilePath: \vue_shop\src\main.js
  */
@@ -16,6 +16,8 @@ import './assets/css/global.css'
 import './assets/fonts/iconfont.css'
 // 导入axios通信,并配置
 import axios from 'axios'
+// 导入后安装插件 vue-table-with-tree-grid,树形表格定制标签
+import TreeTable from 'vue-table-with-tree-grid'
 axios.defaults.baseURL = 'http://127.0.0.1:8888/api/private/v1/'
 // 设置拦截器
 axios.interceptors.request.use(config => {
@@ -24,6 +26,7 @@ axios.interceptors.request.use(config => {
   return config
 })
 Vue.prototype.$http = axios
+Vue.component('tree-table', TreeTable)
 
 Vue.config.productionTip = false
 
