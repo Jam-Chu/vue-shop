@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-02-11 15:50:07
- * @LastEditTime: 2020-02-21 10:29:23
+ * @LastEditTime: 2020-02-25 11:19:14
  * @LastEditors: Please set LastEditors
  * @Description: 页面路由注册
  * @FilePath: \vue_shop\src\router\index.js
@@ -17,6 +17,8 @@ import Rights from '../components/right/rights'
 import Roles from '../components/right/roles'
 import Cates from '../components/goods/cates'
 import Params from '../components/goods/params'
+import List from '../components/goods/list'
+import Add from '../components/goods/add'
 
 Vue.use(VueRouter)
 const router = new VueRouter({
@@ -32,7 +34,10 @@ const router = new VueRouter({
         { path: '/rights', component: Rights },
         { path: '/roles', component: Roles },
         { path: '/categories', component: Cates },
-        { path: '/params', component: Params }]
+        { path: '/params', component: Params },
+        { path: '/goods', component: List },
+        { path: '/goods/add', component: Add }
+      ]
     }
   ]
 })

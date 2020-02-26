@@ -40,5 +40,17 @@ html, body, #app{
 .el-tabs{
     margin-top: 30px;
 }
-
+.el-tabs__item{
+    font-size: 15px;
+}
+.el-steps{
+    margin: 15px 0;
+}
+/* 通过在页面上选中右键检查可以定位到元素，并在下方找到对应的css名 */
+.el-step__title{
+    font-size: 13px;
+}
+.ql-editor{
+    min-height: 300px;
+}
     
