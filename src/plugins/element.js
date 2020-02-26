@@ -1,14 +1,14 @@
 /*
  * @Author: your name
  * @Date: 2020-02-11 15:52:52
- * @LastEditTime: 2020-02-26 10:49:30
+ * @LastEditTime: 2020-02-26 21:42:56
  * @LastEditors: Please set LastEditors
  * @Description: ElementUI组件注册
  * @FilePath: \vue_shop\src\plugins\element.js
  */
 // 注：所有element组件标签的名字都可以当作calss名使用
 import Vue from 'vue'
-import { Button, Form, FormItem, Input, Message, Container, Header, Aside, Menu, Submenu, MenuItem, Main, Breadcrumb, BreadcrumbItem, Card, Row, Col, Table, TableColumn, Switch, Tooltip, Pagination, Dialog, MessageBox, Tag, Tree, Select, Option, Cascader, Alert, Tabs, TabPane, Steps, Step, Checkbox, CheckboxGroup, Upload } from 'element-ui'
+import { Button, Form, FormItem, Input, Message, Container, Header, Aside, Menu, Submenu, MenuItem, Main, Breadcrumb, BreadcrumbItem, Card, Row, Col, Table, TableColumn, Switch, Tooltip, Pagination, Dialog, MessageBox, Tag, Tree, Select, Option, Cascader, Alert, Tabs, TabPane, Steps, Step, Checkbox, CheckboxGroup, Upload, Timeline, TimelineItem } from 'element-ui'
 
 Vue.use(Button)
 Vue.use(Form)
@@ -45,6 +45,8 @@ Vue.use(Step)
 Vue.use(Checkbox)
 Vue.use(CheckboxGroup)
 Vue.use(Upload)
+Vue.use(Timeline)
+Vue.use(TimelineItem)
 
 Vue.prototype.$message = Message
 Vue.prototype.$confirm = MessageBox.confirm
