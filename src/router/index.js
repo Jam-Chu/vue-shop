@@ -1,27 +1,42 @@
 /*
  * @Author: your name
  * @Date: 2020-02-11 15:50:07
- * @LastEditTime: 2020-02-27 11:12:08
+ * @LastEditTime: 2020-02-27 16:45:07
  * @LastEditors: Please set LastEditors
  * @Description: 页面路由注册
  * @FilePath: \vue_shop\src\router\index.js
  */
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Login from '../components/login.vue'
-import Home from '../components/home.vue'
-import Welcome from '../components/welcome'
-// Welcome是子路由，属于home页面的组件
-import Users from '../components/users/users'
-import Rights from '../components/right/rights'
-import Roles from '../components/right/roles'
-import Cates from '../components/goods/cates'
-import Params from '../components/goods/params'
-import List from '../components/goods/list'
-import Add from '../components/goods/add'
-import Order from '../components/orders/order'
-import Reports from '../components/report/report'
 
+// import Login from '../components/login.vue'
+// import Home from '../components/home.vue'
+// import Welcome from '../components/welcome'
+const Login = () => import(/* webpackChunkName: "login-home-welcome" */ '../components/login.vue')
+const Home = () => import(/* webpackChunkName: "login-home-welcome" */ '../components/home.vue')
+const Welcome = () => import(/* webpackChunkName: "login-home-welcome" */ '../components/welcome')
+
+// import Users from '../components/users/users'
+// import Rights from '../components/right/rights'
+// import Roles from '../components/right/roles'
+const Users = () => import(/* webpackChunkName: "users-rights-roles" */ '../components/users/users')
+const Rights = () => import(/* webpackChunkName: "users-rights-roles" */ '../components/right/rights')
+const Roles = () => import(/* webpackChunkName: "users-rights-roles" */ '../components/right/roles')
+
+// import Cates from '../components/goods/cates'
+// import Params from '../components/goods/params'
+const Cates = () => import(/* webpackChunkName: "cates-params" */ '../components/goods/cates')
+const Params = () => import(/* webpackChunkName: "cates-params" */ '../components/goods/params')
+
+// import List from '../components/goods/list'
+// import Add from '../components/goods/add'
+const List = () => import(/* webpackChunkName: "list-add" */ '../components/goods/list')
+const Add = () => import(/* webpackChunkName: "list-add" */ '../components/goods/add')
+
+// import Order from '../components/orders/order'
+// import Reports from '../components/report/report'
+const Order = () => import(/* webpackChunkName: "order-reports" */ '../components/orders/order')
+const Reports = () => import(/* webpackChunkName: "order-reports" */ '../components/report/report')
 Vue.use(VueRouter)
 const router = new VueRouter({
   routes: [

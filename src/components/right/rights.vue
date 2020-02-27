@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-02-17 14:22:12
- * @LastEditTime: 2020-02-17 15:31:57
+ * @LastEditTime: 2020-02-27 12:52:00
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue_shop\src\components\right\rights.vue
@@ -16,7 +16,7 @@
         </el-breadcrumb>
         <!-- 卡片视图 -->
         <el-card>
-            <el-table :data="rightsList" :border="true" :stripe="ture">
+            <el-table :data="rightsList" :border="true" :stripe="true">
                 <el-table-column label="#" type="index"></el-table-column>
                 <el-table-column label="权限名称" prop="authName"></el-table-column>
                 <el-table-column label="路径" prop="path"></el-table-column>

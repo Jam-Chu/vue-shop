@@ -1,3 +1,11 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-02-11 15:50:07
+ * @LastEditTime: 2020-02-27 16:16:51
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \vue_shop\public\index.html
+ -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -5,7 +13,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <title><%= htmlWebpackPlugin.options.title %></title>
+    <title><%= htmlWebpackPlugin.options.isProd ? '' : 'dev-' %>电商管理系统</title>
+    <% if(htmlWebpackPlugin.options.isProd){ %>
+    <!-- nprogress,quill样式表 -->
+    <link rel="stylesheet" href="http://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.css" />
+    <link rel="stylesheet" href="http://cdn.staticfile.org/quill/3.0.6/quill.core.min.css" />
+    <link rel="stylesheet" href="http://cdn.staticfile.org/quill/3.0.6/quill.snow.min.css" />
+    <link rel="stylesheet" href="http://cdn.staticfile.org/quill/3.0.6/quill.bubble.min.css" />
+    <!-- js -->
+    <script src="http://cdn.staticfile.org/vue/2.6.11/vue.min.js"></script>
+    <script src="http://cdn.staticfile.org/vue-router/3.1.5/vue-router.min.js"></script>
+    <script src="http://cdn.staticfile.org/axios/0.19.2/axios.min.js"></script>
+    <script src="http://cdn.staticfile.org/lodash.js/4.17.15/lodash.min.js"></script>
+    <script src="http://cdn.staticfile.org/echarts/4.6.0/echarts.min.js"></script>
+    <script src="http://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js"></script>
+    <script src="http://cdn.staticfile.org/quill/3.0.6/quill.min.js"></script>
+    <script src="http://cdn.jsdelivr.net/vue-quill-editor@3.0.6/dist/vue-quill-editor.js"></script>
+    <!-- elementUI相关的样式表与js的外部导入 -->
+    <link rel="stylesheet" href="http://cdn.staticfile.org/element-ui/2.13.0/theme-chalk/index.css">
+    <script src="http://cdn.staticfile.org/element-ui/2.13.0/index.js"></script>
+    <% } %>
   </head>
   <body>
     <noscript>
