@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-02-26 20:03:26
- * @LastEditTime: 2020-02-26 22:04:31
+ * @LastEditTime: 2020-02-27 11:01:04
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue_shop\src\components\orders\order.vue
@@ -109,7 +109,6 @@ export default {
   methods: {
     async getOrdersList () {
       const { data: res } = await this.$http.get('orders', { params: this.queryInfo })
-      console.log(res)
       if (res.meta.status !== 200) {
         return this.$message.error('获取订单列表失败')
       }

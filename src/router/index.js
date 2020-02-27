@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-02-11 15:50:07
- * @LastEditTime: 2020-02-26 20:06:27
+ * @LastEditTime: 2020-02-27 11:12:08
  * @LastEditors: Please set LastEditors
  * @Description: 页面路由注册
  * @FilePath: \vue_shop\src\router\index.js
@@ -20,6 +20,7 @@ import Params from '../components/goods/params'
 import List from '../components/goods/list'
 import Add from '../components/goods/add'
 import Order from '../components/orders/order'
+import Reports from '../components/report/report'
 
 Vue.use(VueRouter)
 const router = new VueRouter({
@@ -38,7 +39,8 @@ const router = new VueRouter({
         { path: '/params', component: Params },
         { path: '/goods', component: List },
         { path: '/goods/add', component: Add },
-        { path: '/orders', component: Order }
+        { path: '/orders', component: Order },
+        { path: '/reports', component: Reports }
       ]
     }
   ]
